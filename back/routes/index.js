@@ -90,10 +90,11 @@ router.post('/login', function(req, res, next) {
 });
 
 router.post('/registerApi', function(req, res, next) {
-  console.log(req.body);
+    console.log(req.body);
     var apiResponse = {
         success: false,
-        data: {}
+        message: undefined,
+        resp: undefined
     };
     var username = req.body.username;
     var password = req.body.password;
@@ -113,16 +114,14 @@ router.post('/registerApi', function(req, res, next) {
         });
         newAccount.save(); //insert to db.  Need error handling
         apiResponse.success = true;
-        apiResponse.data = {
+        apiResponse.resp = {
             username: username
         };
         res.json(apiResponse);
     } else {
         //passwords don't match.  send error message and back to register page
-        apiResponse.success = true;
-        apiResponse.data = {
-            message: 'password mismatch'
-        };
+        apiResponse.success = false;
+        apiResponse.message = 'password mismatch';
         res.json(apiResponse);
     }
 });
@@ -131,6 +130,16 @@ router.post('/loginApi', function(req, res, next) {
     var username = req.body.username;
     var password = req.body.password;
     console.log(req.body);
+    var apiResponse = {
+        success: false,
+        message: undefined,
+        resp: undefined
+    };
+    if (username === null || password === null || username.length === 0 || password.length === 0) {
+        apiResponse.success = false;
+        apiResponse.message =  'invalid request';
+        res.json(apiResponse);
+    }
     //query mongo
     Account.findOne({
             username: username
@@ -138,36 +147,25 @@ router.post('/loginApi', function(req, res, next) {
         function(err, docFound) {
             console.log(err);
             console.log(docFound);
-            var apiResponse = {
-                success: false,
-                data: {}
-            };
+
             if (docFound === null) {
                 apiResponse.success = false;
-                apiResponse.data = {
-                    message: 'invalid user'
-                };
+                apiResponse.message = 'invalid user';
                 res.json(apiResponse);
             }
             var passwordsMatch = bcrypt.compareSync(password, docFound.password); //returns boolean
             console.log("password match = " + passwordsMatch);
             if (passwordsMatch) {
                 apiResponse.success = true;
-                apiResponse.data = docFound;
+                apiResponse.resp = docFound;
             } else {
                 apiResponse.success = false;
-                apiResponse.data = {
-                    message: 'invalid password'
-                };
+                apiResponse.message = 'invalid password';
             }
-
             res.json(apiResponse);
 
         });
 });
-
-
-
 
 
 module.exports = router;

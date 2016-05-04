@@ -19,24 +19,50 @@
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid text-center">
             <div class="navbar-header">
-                <button type="button" data-toggle="collapse" data-target="#bs-navbar-collapse-1" aria-expanded="false" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                <button type="button" data-toggle="collapse" data-target="#bs-navbar-collapse-1" aria-expanded="false" class="navbar-toggle collapsed">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
                 <a href="#/" class="navbar-brand"><img src="img/dc_roasters_200x124_lt.png"></a>
             </div>
-            <div id="bs-navbar-collapse-1" class="collapse navbar-collapse">
+
+            <div id="bs-navbar-collapse-1" class="nav1 collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="#/login">
-                            <button type="submit" class="btn btn-link">Log In</button>
+                        <a href="#/login" class="fa fa-sign-in">
+                            <span>Login In</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#/register">
-                            <button type="submit" class="btn btn-link">Register</button>
+                        <a href="#/register" class="fa fa-user-plus">
+                            <span>Register</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#/" class="fa fa-home">
+                            <span>Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#/" class="fa fa-coffee">
+                            <span>Options</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#/" class="fa fa-truck">
+                            <span>Delivery</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#/" class="fa fa-credit-card">
+                            <span>Payment</span>
                         </a>
                     </li>
                 </ul>
             </div>
-        </div>
+
     </nav>
 
     <div ng-view></div>
