@@ -5,6 +5,8 @@ coffeeApp.config(function($routeProvider) {
         controller: 'coffeeController',
         templateUrl: function($routeParams) {
             console.log("routing to home");
+            $('.home-nav').css('display', 'block');
+            $('.order-nav').css('display', 'none');
             return 'homeView.html';
         }
     });
@@ -12,6 +14,8 @@ coffeeApp.config(function($routeProvider) {
         controller: 'coffeeController',
         templateUrl: function($routeParams) {
             console.log("routing to register");
+            $('.home-nav').css('display', 'none');
+            $('.order-nav').css('display', 'none');
             return 'registerView.html';
         }
     });
@@ -19,6 +23,8 @@ coffeeApp.config(function($routeProvider) {
         controller: 'coffeeController',
         templateUrl: function($routeParams) {
             console.log("routing to login");
+            $('.home-nav').css('display', 'none');
+            $('.order-nav').css('display', 'none');
             return 'loginView.html';
         }
     });
@@ -26,8 +32,8 @@ coffeeApp.config(function($routeProvider) {
         controller: 'coffeeController',
         templateUrl: function($routeParams) {
             console.log("routing to order");
-            $('.nav1').css('display', 'none');
-            $('.nav2').css('display', 'block');
+            $('.home-nav').css('display', 'none');
+            $('.order-nav').css('display', 'block');
             return 'orderView.html';
         }
     });
@@ -59,6 +65,8 @@ coffeeApp.controller('coffeeController', function($scope, $http, $location, $rou
                     $scope.loginMessage = "Invalid username and/or password";
                 } else {
                     //redirect to order page
+                    $('.home-nav').css('display', 'none');
+                    $('.order-nav').css('display', 'block');
                     $location.path('/order');
                 }
             },

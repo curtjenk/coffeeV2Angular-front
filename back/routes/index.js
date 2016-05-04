@@ -112,12 +112,23 @@ router.post('/registerApi', function(req, res, next) {
             createDate: createDate,
             modifiedDate: modifiedDate
         });
-        newAccount.save(); //insert to db.  Need error handling
-        apiResponse.success = true;
-        apiResponse.resp = {
-            username: username
-        };
-        res.json(apiResponse);
+        Account.findOne({
+                username: username
+            },
+            function(err, docFound) {
+                if (docFound === null) { //user doesn't exist
+                    newAccount.save(); //insert to db.  Need error handling
+                    apiResponse.success = true;
+                    apiResponse.resp = {
+                        username: username
+                    };
+                } else {
+                    apiResponse.success = false;
+                    apiResponse.message = "user already exists";
+                }
+                res.json(apiResponse);
+            });
+
     } else {
         //passwords don't match.  send error message and back to register page
         apiResponse.success = false;
@@ -137,7 +148,7 @@ router.post('/loginApi', function(req, res, next) {
     };
     if (username === null || password === null || username.length === 0 || password.length === 0) {
         apiResponse.success = false;
-        apiResponse.message =  'invalid request';
+        apiResponse.message = 'invalid request';
         res.json(apiResponse);
     }
     //query mongo
@@ -166,6 +177,5 @@ router.post('/loginApi', function(req, res, next) {
 
         });
 });
-
 
 module.exports = router;
