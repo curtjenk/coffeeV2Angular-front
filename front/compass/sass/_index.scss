@@ -9,16 +9,22 @@ img {
 .pwd-error {
     color: red;
 }
-
+.nav>li.active-session {
+  display: none;
+}
 .nav-choices {
   margin-top: 15px;
-  // .order-nav {
-  //   display: none;
-  // }
 }
 
 .navbar-default .navbar-nav > li > a {
     color: white;
+    text-decoration: none;
+    &:visited {
+      color: white;
+    }
+    &:link {
+      color: white;
+    }
     &:hover {
     color: white;
     border: 1px solid white;

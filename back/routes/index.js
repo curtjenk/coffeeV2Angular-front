@@ -122,6 +122,7 @@ router.post('/registerApi', function(req, res, next) {
                     apiResponse.resp = {
                         username: username
                     };
+                    req.session.username = username;
                 } else {
                     apiResponse.success = false;
                     apiResponse.message = "user already exists";
@@ -169,6 +170,7 @@ router.post('/loginApi', function(req, res, next) {
             if (passwordsMatch) {
                 apiResponse.success = true;
                 apiResponse.resp = docFound;
+                req.session.username = username;
             } else {
                 apiResponse.success = false;
                 apiResponse.message = 'invalid password';

@@ -46,7 +46,6 @@ coffeeApp.controller('coffeeController', function($scope, $http, $location, $rou
     var apiUrl = "http://localhost:3000";
 
     $scope.loginFunc = function() {
-        $scope.loginMessage = "clicked login";
         console.log($scope.loginUsername);
         if (!$scope.loginUsername || $scope.loginUsername.length === 0 || !$scope.loginPassword || $scope.loginPassword.length === 0) {
             $scope.loginMessage = "please enter a username and password";
@@ -64,9 +63,7 @@ coffeeApp.controller('coffeeController', function($scope, $http, $location, $rou
                 if (response.data.success === false) {
                     $scope.loginMessage = "Invalid username and/or password";
                 } else {
-                    //redirect to order page
-                    $('.home-nav').css('display', 'none');
-                    $('.order-nav').css('display', 'block');
+                   $('li.active-session').css('display', 'block');
                     $location.path('/order');
                 }
             },

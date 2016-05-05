@@ -1,36 +1,50 @@
-/* line 1, ../compass/sass/_base.scss */
+/* line 1, ../compass/sass/_index.scss */
 body {
   padding-top: 49px;
   background-color: #f2f2f2;
   color: #003300;
 }
 
-/* line 6, ../compass/sass/_base.scss */
+/* line 6, ../compass/sass/_index.scss */
 img {
   max-width: 100%;
 }
 
-/* line 9, ../compass/sass/_base.scss */
+/* line 9, ../compass/sass/_index.scss */
 .pwd-error {
   color: red;
 }
 
-/* line 13, ../compass/sass/_base.scss */
+/* line 12, ../compass/sass/_index.scss */
+.nav > li.active-session {
+  display: none;
+}
+
+/* line 15, ../compass/sass/_index.scss */
 .nav-choices {
   margin-top: 15px;
 }
 
-/* line 20, ../compass/sass/_base.scss */
+/* line 19, ../compass/sass/_index.scss */
 .navbar-default .navbar-nav > li > a {
   color: white;
+  text-decoration: none;
 }
-/* line 22, ../compass/sass/_base.scss */
+/* line 22, ../compass/sass/_index.scss */
+.navbar-default .navbar-nav > li > a:visited {
+  color: white;
+}
+/* line 25, ../compass/sass/_index.scss */
+.navbar-default .navbar-nav > li > a:link {
+  color: white;
+}
+/* line 28, ../compass/sass/_index.scss */
 .navbar-default .navbar-nav > li > a:hover {
   color: white;
   border: 1px solid white;
 }
 
-/* line 29, ../compass/sass/_base.scss */
+/* line 35, ../compass/sass/_index.scss */
 .navbar {
   min-height: 100px;
   padding-top: 5px;
@@ -38,19 +52,19 @@ img {
   text-align: center;
   background-color: #003300;
 }
-/* line 35, ../compass/sass/_base.scss */
+/* line 41, ../compass/sass/_index.scss */
 .navbar img {
   display: block;
   margin-top: 2px;
   height: 70px;
 }
 
-/* line 41, ../compass/sass/_base.scss */
+/* line 47, ../compass/sass/_index.scss */
 button.btn {
   background-color: #003300;
 }
 
-/* line 44, ../compass/sass/_base.scss */
+/* line 50, ../compass/sass/_index.scss */
 .footer {
   margin-top: 50px;
 }
